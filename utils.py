@@ -85,6 +85,7 @@ def Datos_Indep (Datos,n_dias=4):
 def Convergencia_AD(datos,T_inicial,inter=0.1,verb=False):
     Datos2  = datos
     T_Final = T_inicial
+    Datos2 = [round(j,2) for j in Datos2 if round(j,2)> 0]
     if verb:
         print("El threshold inicial es de {}".format(T_inicial))
     while len(Datos2)>15:
@@ -97,7 +98,7 @@ def Convergencia_AD(datos,T_inicial,inter=0.1,verb=False):
         if verb:
             print(A)
         if test == "No se aprobó el test!":
-            Datos2 = [round(j-inter,2) for j in Datos2 if round(j-inter,2)>=0]
+            Datos2 = [round(j-inter,2) for j in Datos2 if round(j-inter,2)> 0]
             T_Final = round(T_Final + inter,2)
             if verb:
                 print("============= No se convergió ====================")
